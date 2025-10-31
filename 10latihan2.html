@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Sederhana</title>
+</head>
+<body>
+  <form name="fform" align="center">
+    <h1>Membuat Calculator</h1>
+    <hr>
+    <pre>
+Bilangan 1: <input type="number" name="angka1">
+Bilangan 2: <input type="number" name="angka2">
+    </pre>
+
+    <div align="center">
+      <input type="button" value="+" onclick="kalkulator('+')">
+      <input type="button" value="-" onclick="kalkulator('-')">
+      <input type="button" value="*" onclick="kalkulator('*')">
+      <input type="button" value="/" onclick="kalkulator('/')">
+      <input type="button" value="C" onclick="hapus()">
+    </div>
+  </form>
+
+  <script>
+    function kalkulator(operasi) {
+      var a = Number(document.fform.angka1.value);
+      var b = Number(document.fform.angka2.value);
+      var hasil;
+      var pesan;
+
+      switch (operasi) {
+        case '+':
+          hasil = a + b;
+          pesan = "Hasil Penjumlahan = " + hasil;
+          break;
+        case '-':
+          hasil = a - b;
+          pesan = "Hasil Pengurangan = " + hasil;
+          break;
+        case '*':
+          hasil = a * b;
+          pesan = "Hasil Perkalian = " + hasil;
+          break;
+        case '/':
+          if (b === 0) {
+            pesan = "Tidak bisa dibagi 0!";
+          } else {
+            hasil = a / b;
+            pesan = "Hasil Pembagian = " + hasil;
+          }
+          break;
+        default:
+          pesan = "Operasi tidak dikenal!";
+      }
+
+      alert(pesan);
+    }
+
+    function hapus() {
+      document.fform.angka1.value = "";
+      document.fform.angka2.value = "";
+    }
+  </script>
+</body>
+</html>

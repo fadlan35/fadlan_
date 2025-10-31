@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulir Pendaftaran Calon Mahasiswa Baru</title>
+    <script>
+        function tampilkan() {
+            // Ambil data dari form
+            let nama = document.getElementById("nama").value;
+            let alamat = document.getElementById("alamat").value;
+            let asal = document.getElementById("asal").value;
+
+            // Cek jurusan
+            let jurusan = [];
+            if (document.getElementById("ti").checked) jurusan.push("Teknik Informatika");
+            if (document.getElementById("mi").checked) jurusan.push("Manajemen Informatika");
+
+            // Cek jenjang
+            let jenjang = "";
+            if (document.getElementById("diploma").checked) jenjang = "Diploma";
+            else if (document.getElementById("sarjana").checked) jenjang = "Sarjana";
+
+            // Tampilkan hasil ke bagian bawah
+            document.getElementById("hasilNama").value = nama;
+            document.getElementById("hasilAlamat").value = alamat;
+            document.getElementById("hasilAsal").value = asal;
+            document.getElementById("hasilJurusan").value = jurusan.join(", ");
+            document.getElementById("hasilJenjang").value = jenjang;
+        }
+    </script>
+</head>
+<body>
+    <form name="fform">
+        <h2 align="center">Formulir Pendaftaran Calon Mahasiswa Baru</h2>
+        <hr>
+        <pre>
+Nama           : <input type="text" size="30" id="nama">
+Alamat         : <input type="text" size="40" id="alamat">
+Asal Sekolah   : 
+                <select id="asal">
+                    <option value="SMA">SMA</option>
+                    <option value="SMK">SMK</option>
+                    <option value="MA">MA</option>
+                </select>
+Jurusan dipilih: 
+                <input type="checkbox" id="ti" value="TI">Teknik Informatika
+                <input type="checkbox" id="mi" value="MI">Manajemen Informatika
+Jenjang        : 
+                <input type="radio" id="diploma" name="jenjang" value="Diploma">Diploma
+                <input type="radio" id="sarjana" name="jenjang" value="Sarjana">Sarjana
+
+                <input type="button" value="Kirim" onclick="tampilkan()">
+                <input type="reset" value="Reset">
+        </pre>
+        <hr>
+
+        <pre>
+Nama           : <input type="text" size="30" id="hasilNama" readonly>
+Alamat         : <input type="text" size="40" id="hasilAlamat" readonly>
+Asal Sekolah   : <textarea rows="3" cols="50" id="hasilAsal" readonly></textarea>
+Jurusan        : <input type="text" size="40" id="hasilJurusan" readonly>
+Jenjang        : <input type="text" size="20" id="hasilJenjang" readonly>
+        </pre>
+    </form>
+</body>
+</html>
